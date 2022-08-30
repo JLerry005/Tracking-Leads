@@ -1,49 +1,80 @@
 // alert("Working!");
 
-let myLead = `["www.swiftcareph.com"]`;
+let myLeads = [];
+// myLead = JSON.parse(myLead)
+// myLead.push("www.netflix.com");
 
-myLead = JSON.parse(myLead)
-myLead.push("www.netflix.com");
+// myLead = JSON.stringify(myLead);
+// console.log(typeof myLead)
 
-myLead = JSON.stringify(myLead);
-console.log(typeof myLead)
-
-const inputEl = document.getElementById("input-el")
-const inputBtn = document.getElementById("input-btn")
-const ulEl = document.getElementById("ul-el")
+const inputEl = document.getElementById("input-el");
+const inputBtn = document.getElementById("input-btn");
+const deleteBtn = document.getElementById("delete-btn")
+const tabBtn = document.getElementById("tab-btn")
+const ulEl = document.getElementById("ul-el");
 
 // localStorage.setItem("myWebsite", "www.swiftcareph.com");
 // console.log( localStorage.getItem("myWebsite") );
-// localStorage.reload()
+// localStorage.clear()
 
-inputBtn.addEventListener("click", () => {
-    myLead.push(inputEl.value);
-    inputEl.value = ""
-    renderLeads()
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads"))
+
+if(leadsFromLocalStorage){
+    myLeads = leadsFromLocalStorage;
+    render(myLeads);
+    // console.table(myLeads)
+}
+
+const tab = [
+    {url: ""}
+]
+
+tabBtn.addEventListener("click", () => {
+    tab.push(myLeads)
+    localStorage.setItem("saveTab", JSON.stringify(tab));
+    render(tab);
 })
 
+console.log(tab[length].url)
 
-function renderLeads(){
+
+function render(leads){
     let listItems = "";
 
-    for(let i = 0; i < myLead.length; i++){
+    for(let i = 0; i < leads.length; i++){
 
         listItems += `
             <li>
-                <a href='${myLead[i]}' target='_blank'>
-                    ${myLead[i]}
+                <a href='${leads[i]}' target='_blank'>
+                    ${leads[i]}
                 </a>
             </li>
         `;
-
-        // const li = document.createElement("li")
-        // li.textContent += myLead[i]
-        // ulEl.append(li)
     }
     
     ulEl.innerHTML = listItems;
 }
 
+inputBtn.addEventListener("click", () => {
+    myLeads.push(inputEl.value);
+    inputEl.value = ""
+    
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    render(myLeads);
+})
+
+deleteBtn.addEventListener("dblclick", () => {
+    localStorage.clear();
+    myLeads = [];
+    render(myLeads);
+})
+
+
+
+
+// undoBtn.addEventListener("click", () => {
+//     myLeads.shift()
+// })
 
 
 // Use .innerHTML to render a Buy! button inside the div container
@@ -75,3 +106,36 @@ function renderLeads(){
         //         </a>
         //     </li>
         // `
+
+// Truthy ang falsy values 
+ 
+// console.log( Boolean("") )    // False
+// console.log( Boolean("0") )   // True
+// console.log( Boolean(100) )   // True
+// console.log( Boolean(null) )  // false
+// console.log( Boolean([0]) )   // True
+// console.log( Boolean(-0) )    // False
+
+// Function Parameter
+
+// const welcomeEl = document.getElementById("welcome-el")
+
+// function greetUser(greet, name){
+//     welcomeEl.textContent = `${greet} , ${name}`
+// }
+
+// greetUser("Howdy", "Ler!")
+
+// function add(num1, num2){
+//     return num1 + num2;
+// }
+
+// console.log( add(3, 4) );
+// console.log( add(9, 102) );
+
+// function getFirst(arr){
+//     return arr[1]
+// }
+
+// let firstNum = getFirst([10, 20 ,50]);
+// console.log( firstNum )
