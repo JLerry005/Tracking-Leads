@@ -6,19 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chrome Extension</title>
     <link rel="stylesheet" href="style.css">
-    <link type="image/png" sizes="120x120" rel="icon" href="icon.png">
+    <link type="image/png" sizes="120x120" rel="icon" href="bookmark-icon.svg">
 </head>
 <body>
-    <!-- <a href="">Home</a> -->
-    <input type="text" id="input-el">
-    <button id="input-btn">SAVE INPUT</button>
-    <button id="tab-btn">SAVE TAB</button>
-    <button id="delete-btn">DELETE ALL</button>
-    <ul id="ul-el"></ul>
-    <div id="container">
+    <div class="headerContainer">
+        <img src="bookmark-icon.svg" alt="Bookmark-icon" width="50px" height="50px">
+        <h1> TRACKING <span style="color: #f6d15f;">LEADS</span></h1>
     </div>
-    <p id="welcome-el"></p>
-    <!-- <a href="../www.facebook.com">f</a> -->
+
+    <input type="text" id="input-el" placeholder="Paste or Type your leads...">
+
+    <div class="buttonContainer">
+        <button id="input-btn">SAVE INPUT</button>
+        <button id="tab-btn">SAVE TAB</button>
+        <button id="delete-btn">DELETE ALL</button>
+    </div>
+    <div class="listContainer">
+        <ul id="ul-el"></ul>
+    </div>
+
     <script src="index.js"></script>
 </body>
 </html>
