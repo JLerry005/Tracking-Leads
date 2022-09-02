@@ -78,10 +78,24 @@ li{
     margin-top: 5px;
 
     font-size: 13px;
-    font-weight: bolder;
+    /* font-weight: bold; */
     text-decoration: underline;
 }
 
 li a {
+    color: #fdf6dc;
+}
+
+.weblink{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.webIcon{
+    height: 25px;
+    width: 25px;
     color: #f6d15f;
+    margin-right: 5px;
 }
